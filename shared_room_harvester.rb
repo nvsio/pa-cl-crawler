@@ -72,7 +72,7 @@ end
 
 
 def main(max_price)
-  url = "http://sfbay.craigslist.org/search/sfc/roo?sale_date=-&maxAsk=#{max_price}"
+  url = "http://sfbay.craigslist.org/search/pen/roo?nh=83&sale_date=-&maxAsk=#{max_price}"
 
   # Create a Mechanize agent
   a = Mechanize.new { |agent|
@@ -84,7 +84,7 @@ def main(max_price)
     doc = page.parser
 
     # Parse each link on the page
-    links = doc.css("a").map {|link| link["href"]}.select { |link| (link.match(/\/sfc\/roo\/\d+/))? true : false  }.uniq!
+    links = doc.css("a").map {|link| link["href"]}.select { |link| (link.match(/\/pen\/roo\/\d+/))? true : false  }.uniq!
 
     # iterate through each link
     links.sample(1).each do |post_link|
